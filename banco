@@ -1,0 +1,41 @@
+fun main() {
+    var saldo = 0.0
+    
+    while (true) {
+        println("\n=== Banco Simples ===")
+        println("1. Depositar")
+        println("2. Sacar")
+        println("3. Consultar Saldo")
+        println("4. Sair")
+        print("Escolha uma opção: ")
+        
+        val opcao = readLine()?.toIntOrNull()
+        
+        if (opcao == 1) {
+            print("Digite o valor para depósito: ")
+            val deposito = readLine()?.toDoubleOrNull()
+            if (deposito != null && deposito > 0) {
+                saldo += deposito
+                println("Depósito realizado com sucesso!")
+            } else {
+                println("Valor inválido!")
+            }
+        } else if (opcao == 2) {
+            print("Digite o valor para saque: ")
+            val saque = readLine()?.toDoubleOrNull()
+            if (saque != null && saque > 0 && saque <= saldo) {
+                saldo -= saque
+                println("Saque realizado com sucesso!")
+            } else {
+                println("Saldo insuficiente ou valor inválido!")
+            }
+        } else if (opcao == 3) {
+            println("Saldo atual: R$$saldo")
+        } else if (opcao == 4) {
+            println("Saindo do sistema...")
+            break
+        } else {
+            println("Opção inválida! Tente novamente.")
+        }
+    }
+}
